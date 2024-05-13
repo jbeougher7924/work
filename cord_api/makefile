@@ -3,7 +3,7 @@ CFLAGS = -std=c++14 -Wall -I./include
 SRC_DIR = src
 BUILD_DIR = build
 BIN_DIR = bin
-EXECUTABLE = $(BIN_DIR)/ecef_converter_app
+EXECUTABLE = $(BIN_DIR)/converter_app
 SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SOURCES))
 

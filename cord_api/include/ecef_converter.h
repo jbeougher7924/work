@@ -21,7 +21,7 @@ struct ECEF
 double degToRad(double degrees);
 double radToDeg(double radians);
 double getEarthRadius(double latitude);
-ECEF geodeticToECEF(const Geodetic &geodetic);
-Geodetic ECEFToGeodetic(const ECEF &ecef);
+ECEF toECEF(const Geodetic &geodetic);
+Geodetic fromECEF(const ECEF &ecef);
 
 #endif /* ECEF_CONVERTER_H */

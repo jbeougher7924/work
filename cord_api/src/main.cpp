@@ -8,14 +8,14 @@ int main()
 {
     // Convert geodetic to ECEF
     Geodetic geodeticPoint = {37.7749, -122.4194, 0};
-    ECEF ecefPoint = geodeticToECEF(geodeticPoint);
+    ECEF ecefPoint = toECEF(geodeticPoint);
 
     // std::cout << "Geodetic coordinates: (" << geodeticPoint.latitude << ", " << geodeticPoint.longitude << ", "
     //           << geodeticPoint.altitude << ")" << std::endl;
-    // std::cout << "ECEF coordinates: (" << ecefPoint.x << ", " << ecefPoint.y << ", " << ecefPoint.z << ")" << std::endl;
+    std::cout << "ECEF coordinates: (" << ecefPoint.x << ", " << ecefPoint.y << ", " << ecefPoint.z << ")" << std::endl;
 
     // Convert ECEF back to geodetic
-    Geodetic convertedGeodetic = ECEFToGeodetic(ecefPoint);
+    Geodetic convertedGeodetic = fromECEF(ecefPoint);
 
     // std::cout << "Converted back to geodetic coordinates: (" << convertedGeodetic.latitude << ", "
     //           << convertedGeodetic.longitude << ", " << convertedGeodetic.altitude << ")" << std::endl;
@@ -68,6 +68,17 @@ int main()
                                 { return multiply(3.5, 2.0); });
 
     std::cout << "Output: " << result << std::endl;
+
+    // Create a lambda function that captures geodeticPoint by reference
+    auto result2 = [&geodeticPoint]() -> ECEF
+    {
+        return toECEF(geodeticPoint);
+    };
+
+    // Call the conversion function with the lambda function
+    auto convertedPoint = conversion(result2);
+
+    std::cout << "ECEF coordinates: (" << convertedPoint.x << ", " << convertedPoint.y << ", " << convertedPoint.z << ")" << std::endl;
 
     return 0;
 }

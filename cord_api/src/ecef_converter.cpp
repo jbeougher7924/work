@@ -20,7 +20,7 @@ double getEarthRadius(double latitude)
     return equatorialRadius / sqrt(1.0 - eccentricitySquared * sinLat * sinLat);
 }
 
-ECEF geodeticToECEF(const Geodetic &geodetic)
+ECEF toECEF(const Geodetic &geodetic)
 {
     double latitude = degToRad(geodetic.latitude);
     double longitude = degToRad(geodetic.longitude);
@@ -34,7 +34,7 @@ ECEF geodeticToECEF(const Geodetic &geodetic)
     return {x, y, z};
 }
 
-Geodetic ECEFToGeodetic(const ECEF &ecef)
+Geodetic fromECEF(const ECEF &ecef)
 {
     double x = ecef.x;
     double y = ecef.y;
