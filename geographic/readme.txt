@@ -1,0 +1,1 @@
+g++ geodetic_to_geocentric_example.cpp -o geodetic_to_geocentric_example -lGeographic && ./geodetic_to_geocentric_example
